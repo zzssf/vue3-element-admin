@@ -8,6 +8,8 @@
     "noLib": false,
     "forceConsistentCasingInFileNames": true,
     "allowSyntheticDefaultImports": true,
+    "verbatimModuleSyntax": true,
+    "ignoreDeprecations": "5.0",
     "strictFunctionTypes": false,
     "jsx": "preserve",
     "baseUrl": ".",
@@ -28,6 +30,7 @@
     "paths": {
       "@/*": ["src/*"]
     }
+  
   },
   "include": [
     "mock/**/*",
