@@ -22,9 +22,9 @@ export default defineComponent({
   data() {
     return {
       sizeOptions: [
-        { label: 'Default', value: 'default' },
-        { label: 'Large', value: 'large' },
-        { label: 'small', value: 'default' }
+        { label: '默认', value: 'default' },
+        { label: '大号', value: 'large' },
+        { label: '小号', value: 'small' }
       ]
     };
   },
@@ -35,7 +35,6 @@ export default defineComponent({
   },
   methods: {
     handleSetSize(size) {
-      this.$ELEMENT.size = size;
       store.app().setSize(size);
       this.refreshView();
       ElMessage({

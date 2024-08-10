@@ -14,6 +14,14 @@ export default defineComponent({
     modelValue: {
       type: Array,
       required: true
+    },
+    placeholder: {
+      type: String,
+      default: null
+    },
+    style: {
+      type: [String, Object],
+      default: null
     }
   },
   computed: {
@@ -31,7 +39,7 @@ export default defineComponent({
   },
   methods: {
     setSort() {
-      const el = this.$refs.dragSelect.$el.querySelectorAll('.el-select__tags > span')[0];
+      const el = this.$refs.dragSelect.$el.querySelector('.el-select__wrapper .el-select__selection');
       this.sortable = Sortable.create(el, {
         ghostClass: 'sortable-ghost', // Class name for the drop placeholder,
         setData: function(dataTransfer) {
@@ -52,7 +60,7 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .drag-select {
-  :deep(.sortable-ghost) {
+  :deep(.sortable-ghost .el-tag) {
     opacity: .8;
     color: #fff !important;
     background: #42b983 !important;

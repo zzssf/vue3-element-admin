@@ -29,7 +29,7 @@
 
 ## 推荐的 IDE 工具和插件
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (禁用 Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+[VSCode](https://code.visualstudio.com/) + [Vue - Official](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (需禁用旧插件 Vetur、Volar ) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
 
 ## Vite 构建工具配置
 
@@ -85,15 +85,9 @@ npm run lint
 
 现代浏览器。
 
-| IE/Edge          | Firefox         | Chrome          | Safari          | 
-| ---------------- | --------------- | --------------- | --------------- | 
-| IE10, IE11, Edge | last 2 versions | last 2 versions | last 2 versions | 
-
-## TODO
-
-当前问题
-
-- 暂未配置git提交规范。
+| Chrome          | Edge            | Firefox         | Safari          | 
+| --------------- | --------------- | --------------- | --------------- | 
+| Chrome ≥ 85     | Edge ≥ 85       | Firefox ≥ 79    | Safari ≥ 14.1   | 
 
 ## 参与贡献
 

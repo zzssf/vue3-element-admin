@@ -7,17 +7,21 @@
 <script>
 import { defineComponent } from 'vue';
 import { ElConfigProvider } from 'element-plus';
-import zhCn from 'element-plus/lib/locale/lang/zh-cn';
+import zhCn from 'element-plus/dist/locale/zh-cn.mjs';
+import { mapState } from 'pinia';
+import store from '@/store';
 
 export default defineComponent({
   components: {
     ElConfigProvider
   },
+  computed: {
+    ...mapState(store.app, ['size'])
+  },
   data() {
     return {
       locale: zhCn,
-      zIndex: 3000,
-      size: 'default'
+      zIndex: 3000
     };
   }
 });

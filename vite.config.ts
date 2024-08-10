@@ -3,11 +3,14 @@ import path from 'node:path';
 
 import { defineConfig, loadEnv } from 'vite';
 import vue from '@vitejs/plugin-vue';
-import vueJsx from '@vitejs/plugin-vue-jsx';
-import 'dotenv/config';
+
+import Inspect from 'vite-plugin-inspect';
+
+// element plus 样式自动按需导入
 import AutoImport from 'unplugin-auto-import/vite';
 import Components from 'unplugin-vue-components/vite';
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers';
+
 import svgSprites from 'rollup-plugin-svg-sprites';
 import { viteMockServe } from 'vite-plugin-mock';
 import { codeInspectorPlugin } from 'code-inspector-plugin';
@@ -25,9 +28,15 @@ export default defineConfig(({ command, mode }) => {
     define: {
       'process.env': env
     },
+    resolve: {
+      alias: {
+        '@': fileURLToPath(new URL('./src', import.meta.url))
+      },
+      extensions: ['.mjs', '.js', '.ts', '.jsx', '.tsx', '.json', '.vue']
+    },
     plugins: [
       vue(),
-      vueJsx(),
+      Inspect(),
       AutoImport({
         resolvers: [ElementPlusResolver()]
       }),
@@ -59,12 +68,6 @@ export default defineConfig(({ command, mode }) => {
         bundler: 'vite'
       })
     ],
-    resolve: {
-      alias: {
-        '@': fileURLToPath(new URL('./src', import.meta.url))
-      },
-      extensions: ['.mjs', '.js', '.ts', '.jsx', '.tsx', '.json', '.vue']
-    },
     server: {
       host: 'localhost',
       port: 8001,
@@ -72,10 +75,10 @@ export default defineConfig(({ command, mode }) => {
         '/api-test': {
           target: 'https://api.midfar.com/dspt_test/api',
           changeOrigin: true,
-          rewrite: (path) => path.replace(/^\/api-test/, '')
-        },
-        headers: {
-          Cookie: env.VUE_APP_COOKIE
+          rewrite: (path) => path.replace(/^\/api-test/, ''),
+          headers: {
+            Cookie: env.VUE_APP_COOKIE
+          }
         }
       }
     }
